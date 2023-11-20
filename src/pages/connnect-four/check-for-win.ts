@@ -37,14 +37,13 @@ const checkDiagonalWin = (row: number, column: number, grid: Grid): boolean => {
 const checkDiagonalLeftToRight = (row: number, column: number, grid: Grid): boolean => {
   let count = 0;
   for (let i = -3; i <= 3; i++) {
-    if (row + i < 0 || row + i >= grid.length || column + i < 0 || column + i >= grid[0].length) {
-      continue;
-    }
-    if (grid[row + i][column + i] === grid[row][column]) {
-      count++;
-      if (count === 4) return true;
-    } else {
-      count = 0;
+    if (!(row + i < 0 || row + i >= grid.length || column + i < 0 || column + i >= grid[0].length)) {
+      if (grid[row + i][column + i] === grid[row][column]) {
+        count++;
+        if (count === 4) return true;
+      } else {
+        count = 0;
+      }
     }
   }
   return false;
@@ -53,14 +52,13 @@ const checkDiagonalLeftToRight = (row: number, column: number, grid: Grid): bool
 const checkDiagonalRightToLeft = (row: number, column: number, grid: Grid): boolean => {
   let count = 0;
   for (let i = -3; i <= 3; i++) {
-    if (row + i < 0 || row + i >= grid.length || column - i < 0 || column - i >= grid[0].length) {
-      continue;
-    }
-    if (grid[row + i][column - i] === grid[row][column]) {
-      count++;
-      if (count === 4) return true;
-    } else {
-      count = 0;
+    if (!(row + i < 0 || row + i >= grid.length || column - i < 0 || column - i >= grid[0].length)) {
+      if (grid[row + i][column - i] === grid[row][column]) {
+        count++;
+        if (count === 4) return true;
+      } else {
+        count = 0;
+      }
     }
   }
   return false;
