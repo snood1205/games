@@ -49,5 +49,5 @@ const firstEmptyRow = (column: number, grid: Grid): number => {
   for (let row = 5; row >= 0; row--)
     if (grid[row][column] === null)
       return row;
-  throw new Error("Column is full");
+  return -1;
 };

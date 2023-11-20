@@ -13,6 +13,7 @@ export const ConnectFour: FC = () => {
   const [redPlayerName, setRedPlayerName] = useState("Red player");
   const [bluePlayerName, setBluePlayerName] = useState("Blue player");
   const currentPlayerName = () => state.player === "Red player" ? redPlayerName : bluePlayerName;
+  const currentColorClass = () => state.player === "Red player" ? "text-red-500" : "text-blue-500";
 
   return (
     <div className="flex flex-col items-center justify-center my-8">
@@ -34,7 +35,7 @@ export const ConnectFour: FC = () => {
         <p className="text-lg text-green-600">Winner: {state.winner}</p> :
         state.draw ?
           <p className="text-lg text-green-600">Draw</p> :
-          <p className={`text-lg`}>{currentPlayerName()}'s turn!</p>}
+          <p className={`text-lg ${currentColorClass()}`}>{currentPlayerName()}'s turn!</p>}
       <h1 className="text-2xl font-bold mb-4">Connect Four</h1>
       <div className="grid grid-cols-7 gap-1">
         {state.grid.map((row, rowIndex) => (

@@ -19,7 +19,7 @@ export const Cell: FC<Props> = ({cell, columnIndex, dispatch, rowIndex, state}: 
   (<div key={`${rowIndex}-${columnIndex}`}
         className={`w-10 h-10 rounded-full border-2 ${cellColorClass(cell)} cursor-pointer`}
         onClick={() => {
-          if (!state.draw && state.winner == null && cell == null) dispatch({
+          if (!state.draw && state.winner == null) dispatch({
             type: "drop",
             column: columnIndex,
             player: state.player
