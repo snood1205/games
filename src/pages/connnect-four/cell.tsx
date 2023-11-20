@@ -10,8 +10,8 @@ interface Props {
 }
 
 const cellColorClass = (cell: GridSpot) => {
-  if (cell === "Player 1") return "bg-red-500";
-  if (cell === "Player 2") return "bg-blue-500";
+  if (cell === "Red player") return "bg-red-500";
+  if (cell === "Blue player") return "bg-blue-500";
   return "bg-gray-500";
 };
 
@@ -19,7 +19,7 @@ export const Cell: FC<Props> = ({cell, columnIndex, dispatch, rowIndex, state}: 
   (<div key={`${rowIndex}-${columnIndex}`}
         className={`w-10 h-10 rounded-full border-2 ${cellColorClass(cell)} cursor-pointer`}
         onClick={() => {
-          if (state.winner == null && cell == null) dispatch({
+          if (!state.draw && state.winner == null && cell == null) dispatch({
             type: "drop",
             column: columnIndex,
             player: state.player
