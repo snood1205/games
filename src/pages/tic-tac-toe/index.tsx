@@ -1,7 +1,7 @@
 import {FC, useState} from "react";
-import {Square} from "./square.tsx";
-import {TopText} from "./top-text.tsx";
-import {NewGameButton} from "./new-game-button.tsx";
+import {Square} from "./square";
+import {TopText} from "./top-text";
+import {NewGameButton} from "./new-game-button";
 
 type SquareValue = "X" | "O" | null;
 type Row = [SquareValue, SquareValue, SquareValue]

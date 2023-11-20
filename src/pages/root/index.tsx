@@ -1,6 +1,6 @@
 import {FC} from "react";
 import {Link, Outlet, useLocation} from "react-router-dom";
-import {LinkToGame} from "./link-to-game.tsx";
+import {LinkToGame} from "./link-to-game";
 
 export const Root: FC = () => {
   const location = useLocation();
@@ -13,8 +13,9 @@ export const Root: FC = () => {
         <Link to="/" className={`block p-2 rounded hover:bg-gray-700${isActive("/")}`}>
           Home
         </Link>
-        <LinkToGame name="Tic Tac Toe" path="/tic-tac-toe" isActive={isActive}/>
         <LinkToGame name="Connect Four" path="/connect-four" isActive={isActive}/>
+        <LinkToGame name="Mastermind" path="/mastermind" isActive={isActive}/>
+        <LinkToGame name="Tic Tac Toe" path="/tic-tac-toe" isActive={isActive}/>
       </nav>
 
       {/* Outlet for rendering child routes */}

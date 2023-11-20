@@ -1,6 +1,6 @@
 import {FC, useReducer, useState} from "react";
 import {emptyGrid, reducer} from "./reducer";
-import {Cell} from "./cell.tsx";
+import {Cell} from "./cell";
 
 
 export const ConnectFour: FC = () => {

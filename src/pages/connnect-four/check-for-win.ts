@@ -1,4 +1,4 @@
-import {Grid} from "./reducer.ts";
+import {Grid} from "./reducer";
 
 export const checkForWin = (row: number, column: number, grid: Grid): boolean =>
   checkVerticalWin(row, column, grid) || checkHorizontalWin(row, column, grid) || checkDiagonalWin(row, column, grid);
