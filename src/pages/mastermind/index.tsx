@@ -24,7 +24,7 @@ export const Mastermind: FC = () => {
     setGuesses(guesses => [...guesses, currentGuess]);
     for (let i = 0; i < 4; i++)
       if (currentGuess[i] !== solution[i])
-        return;
+        return setCurrentGuess([]);
     setGameOver(true);
   };
 
@@ -38,13 +38,14 @@ export const Mastermind: FC = () => {
           <PastGuess guess={guess} solution={solution} key={index}/>
         ))}
         <CurrentGuess currentGuess={currentGuess} setCurrentGuess={setCurrentGuess}/>
-        <button
-          className="mt-4 px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
-          onClick={checkGuess}
-          disabled={gameOver || currentGuess.length !== 4}
-        >Guess
-        </button>
       </div>
+      <button
+        className="mt-4 px-2 py-1 font-medium text-white bg-blue-500 rounded hover:bg-blue-700 text-sm"
+        onClick={checkGuess}
+        disabled={gameOver || currentGuess.length !== 4}
+      >
+        Guess
+      </button>
     </div>
   );
 };

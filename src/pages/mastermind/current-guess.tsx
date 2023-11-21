@@ -6,7 +6,7 @@ interface Props {
   setCurrentGuess: Dispatch<SetStateAction<Color[]>>;
 }
 
-const toBackgroundColor = (color: Color): string => {
+const toBackgroundColor = (color: Color | null): string => {
   switch (color) {
     case "red":
       return "bg-red-400";
@@ -20,31 +20,35 @@ const toBackgroundColor = (color: Color): string => {
       return "bg-fuchsia-300";
     case "grey":
       return "bg-zinc-400";
+    case null:
+      return "bg-black";
   }
 };
 
 export const CurrentGuess: FC<Props> = ({currentGuess, setCurrentGuess}: Props) => {
-  const [selectedColor, setSelectedColor] = useState<Color>("red");
-  const handleClickBuilder = (index: number): MouseEventHandler<HTMLDivElement> => () => {
+  const [index, setIndex] = useState<number>(0);
+  const handleClickBuilder = (color: Color): MouseEventHandler<HTMLDivElement> => () => {
+    if (index >= 4) return;
     setCurrentGuess(currentGuess => {
-      currentGuess[index] = selectedColor;
+      currentGuess[index] = color;
       return currentGuess;
     });
+    setIndex(index => index + 1);
   };
+  const filledGuess = currentGuess.length < 4 ? currentGuess.concat(Array(4 - currentGuess.length).fill(null)) : currentGuess;
 
   return (
-    <div className="flex items-center justify-center">
-      {currentGuess.map((color, index) => (
-        <div key={index} className={`w-8 h-8 rounded-full border-2 ${toBackgroundColor(color)}`}
-             onClick={handleClickBuilder(index)}/>
-      ))}
-      <div className="flex flex-col">
-        <div className="flex">
-          {(["red", "yellow", "green", "blue", "pink", "grey"] as Color[]).map((color) => (
-            <div className={`w-8 h-8 rounded-full border-2 ${toBackgroundColor(color)}`} key={color}
-                 onClick={() => setSelectedColor(color)}/>
-          ))}
-        </div>
+    <div className="flex flex-col items-center justify-center">
+      <div className="flex mb-4">
+        {filledGuess.map((color, index) => (
+          <div key={index} className={`w-8 h-8 rounded-full border-2 ${toBackgroundColor(color)}`}/>
+        ))}
+      </div>
+      <div className="flex">
+        {(["red", "yellow", "green", "blue", "pink", "grey"] as Color[]).map((color) => (
+          <div className={`w-8 h-8 rounded-full border-2 ${toBackgroundColor(color)}`} key={color}
+               onClick={handleClickBuilder(color)}/>
+        ))}
       </div>
     </div>
   );
