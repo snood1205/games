@@ -15,6 +15,7 @@ export const Root: FC = () => {
         </Link>
         <LinkToGame name="Tic Tac Toe" path="/tic-tac-toe" isActive={isActive}/>
         <LinkToGame name="Connect Four" path="/connect-four" isActive={isActive}/>
+        <LinkToGame name="Drag Race" path="/drag-race" isActive={isActive}/>
       </nav>
 
       {/* Outlet for rendering child routes */}

@@ -1,5 +1,5 @@
 import {createBrowserRouter} from "react-router-dom";
-import {ConnectFour, Errors, Root, TicTacToe} from "./pages";
+import {ConnectFour, DragRace, Errors, Root, TicTacToe} from "./pages";
 
 export const router = createBrowserRouter([
   {
@@ -9,6 +9,7 @@ export const router = createBrowserRouter([
     children: [
       {path: "/tic-tac-toe", element: <TicTacToe/>},
       {path: "/connect-four", element: <ConnectFour/>},
+      {path: "/drag-race", element: <DragRace/> },
     ]
   },
 ]);
